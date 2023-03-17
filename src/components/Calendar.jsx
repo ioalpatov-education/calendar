@@ -1,10 +1,11 @@
 import CalendarHeader from "./CalendarHeader";
 import { daysOfWeek, listOfMonths } from "../store/defaultCalendarData";
+import PropTypes from "prop-types";
 
-const Calendar = () => {
+const Calendar = ({ date }) => {
   return (
     <>
-      <CalendarHeader />
+      <CalendarHeader date={date} />
       <div className="ui-datepicker">
         <table className="ui-datepicker-calendar">
           <colgroup>
@@ -65,6 +66,10 @@ const Calendar = () => {
       </div>
     </>
   );
+};
+
+Calendar.propTypes = {
+  date: PropTypes.instanceOf(Date).isRequired,
 };
 
 export default Calendar;

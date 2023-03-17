@@ -1,4 +1,6 @@
-const CalendarHeader = () => {
+import PropTypes from "prop-types";
+
+const CalendarHeader = ({ date }) => {
   return (
     <>
       <div className="ui-datepicker-material-header">
@@ -17,6 +19,10 @@ const CalendarHeader = () => {
       </div>
     </>
   );
+};
+
+CalendarHeader.propTypes = {
+  date: PropTypes.instanceOf(Date).isRequired,
 };
 
 export default CalendarHeader;
