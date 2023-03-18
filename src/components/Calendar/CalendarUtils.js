@@ -6,7 +6,9 @@ export const getWeeksWithDays = (date) => {
   for (let i = 1; i <= numberOfWeeks; i++) {
     let start = (i - 1) * 7;
     let end = i * 7;
-    weeksList.push(calendarDays.slice(start, end));
+    weeksList.push({
+      days: calendarDays.slice(start, end),
+    });
   }
 
   return weeksList;
