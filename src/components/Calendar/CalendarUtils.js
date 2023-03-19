@@ -1,18 +1,4 @@
-export const getWeeksWithDays = (date) => {
-  let weeksList = [];
-  let calendarDays = getCalendarDays(date);
-  const numberOfWeeks = Math.ceil(calendarDays.length / 7);
-
-  for (let i = 1; i <= numberOfWeeks; i++) {
-    let start = (i - 1) * 7;
-    let end = i * 7;
-    weeksList.push({
-      days: calendarDays.slice(start, end),
-    });
-  }
-
-  return weeksList;
-};
+import { daysOfWeek, listOfMonths } from "../../store/defaultCalendarData";
 
 const getCalendarDays = (date) => {
   const listOfDays = [];
@@ -64,4 +50,34 @@ const getCalendarDays = (date) => {
   }
 
   return listOfDays.reverse();
+};
+
+export const getWeeksWithDays = (date) => {
+  let weeksList = [];
+  let calendarDays = getCalendarDays(date);
+  const numberOfWeeks = Math.ceil(calendarDays.length / 7);
+
+  for (let i = 1; i <= numberOfWeeks; i++) {
+    let start = (i - 1) * 7;
+    let end = i * 7;
+    weeksList.push({
+      days: calendarDays.slice(start, end),
+    });
+  }
+
+  return weeksList;
+};
+
+export const getCurrentDate = (date) => {
+  const year = date.getFullYear();
+  const month = listOfMonths[date.getMonth()];
+  const week = daysOfWeek[date.getDay()].name;
+  const day = date.getDate();
+
+  return {
+    year,
+    month,
+    week,
+    day,
+  };
 };

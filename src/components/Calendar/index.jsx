@@ -1,10 +1,11 @@
 import CalendarHeader from "./CalendarHeader";
-import { daysOfWeek, listOfMonths } from "../../store/defaultCalendarData";
+import { daysOfWeek } from "../../store/defaultCalendarData";
+import { getWeeksWithDays, getCurrentDate } from "./CalendarUtils";
 import PropTypes from "prop-types";
-import { getWeeksWithDays } from "./CalendarUtils";
 
 const Calendar = ({ date }) => {
   const weeksWithDays = getWeeksWithDays(date);
+  const currentDate = getCurrentDate(date);
 
   const headThs = daysOfWeek.map((day) => {
     return (
@@ -34,7 +35,7 @@ const Calendar = ({ date }) => {
 
   return (
     <div className="ui-datepicker">
-      <CalendarHeader date={date} />
+      <CalendarHeader currentDate={currentDate} />
       <table className="ui-datepicker-calendar">
         <colgroup>
           <col />
